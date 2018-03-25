@@ -1,10 +1,11 @@
 #include <iostream>
 #include <algorithm>
+#include "SortTestHelper.h"
 
 
 using namespace std;
-
-void selectionSort(int arr[], int n){
+template<typename T>
+void selectionSort(T arr[], int n){
 
     for(int i = 0 ; i < n ; i ++){
         // 寻找[i, n)区间里的最小值
@@ -19,11 +20,13 @@ void selectionSort(int arr[], int n){
 }
 
 int main() {
-    int a[10] = {10,9,8,7,6,5,4,3,2,1};
-    selectionSort(a,10);
-    for( int i = 0 ; i < 10 ; i ++ )
-        cout<<a[i]<<" ";
-    cout<<endl;
+    int N = 20000;
+    int *arr = SortTestHelper::generateRandomArray(N,0,N);
+    //int a[10] = {10,9,8,7,6,5,4,3,2,1};
+    //float b[10] = {10.2,9.1,2.2,2,1,5,7,8,9,0};
+    selectionSort(arr,N);
+    SortTestHelper::printArray(arr,N);
+    delete[] arr;
 
     return 0;
 }
