@@ -3,7 +3,7 @@
 using namespace std;
 
 template<typename T>
-
+// 将arr[l```mid]和arr[mid+1...r]分两部分进行归并
 void __merge(T arr[],int l, int mid,int r)
 {
     T aux[r - l + 1];
@@ -12,16 +12,16 @@ void __merge(T arr[],int l, int mid,int r)
     {
         aux[i - l] = arr[i];
     }
-
+    // 初始化 i指向左半部分索引 j指向右半部分开头出索引
     int i = l,j = mid + 1;
     for (int k = l; k <= r;k++)
     {
-        if(i > mid)
+        if(i > mid) // 如果左半部分元素处理完毕
         {
             arr[k] = aux[j - l];
             j ++;
         }
-        else if(j > r)
+        else if(j > r) // 如果右半部分元素处理完毕
         {
             arr[k] = aux[i - l];
             i ++;
