@@ -13,11 +13,20 @@ int hailstone(int n)
     return length;
 }
 
+void hailstoneView(int n)
+{
+    while (n > 1)
+    {
+        cout << n;
+        (n % 2) ? hailstoneView(3 * n + 1) : hailstoneView(  n /= 2);
+        
+    }
+}
 int main()
 {
     
     int n;
     cin >> n;
-    cout << hailstone(n);
+    cout << hailstone(n) << endl;
     return 0;
 }
